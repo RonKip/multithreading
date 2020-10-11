@@ -1,0 +1,59 @@
+- name: thread
+  type: table
+  desc: a threading extension using defold threading c++ sdk
+  members:
+
+  - name: run
+    type: function
+    desc: run the background function and call complete function when done
+    parameters:
+     - name: code
+       type: string
+       desc: lua code(string) to run in separate thread. It must define background function.
+
+     - name: arg
+       type: string
+       desc: argument to pass to background function
+
+     - name: background
+       type: string
+       desc: name of the background function to run. it's defined in chunk, take a string argument, must return string
+
+     - name: on_complete
+       type: function
+       desc: the function to be called after background function finish. 
+       parameters:
+            - name : self
+              type : table
+              desc : script instance
+
+            - name : result
+              type : string
+              desc : argument from background thread
+  - name: run2
+    type: function
+    desc: run the background function and call complete function when done
+    parameters:
+     - name: filename
+       type: string
+       desc: lua file to run in separate thread. It must be a module. That is it must return a table.
+
+     - name: arg
+       type: string
+       desc: argument to pass to background function
+
+     - name: background
+       type: string
+       desc: name of the background function to run. it's defined in chunk, take a string argument, must return string
+
+     - name: on_complete
+       type: function
+       desc: the function to be called after background function finish. 
+       parameters:
+            - name : self
+              type : table
+              desc : script instance
+
+            - name : result
+              type : string
+              desc : argument from background thread
